@@ -47,7 +47,7 @@ const MangaSlider = ({ category }) => {
                                             <div className='flex flex-col h-[calc(100%-1.75rem)] '>
                                                 <div className='w-full h-full overflow-hidden '>
                                                     <Link>
-                                                        <img src={`manga/manga-cover/${manga.mangaId}/${manga.coverArtUrl}`} alt=""
+                                                        <img src={`https://himeko-manga-app.vercel.app/api/manga/manga-cover/${manga.mangaId}/${manga.coverArtUrl}`} alt=""
                                                             className='object-cover w-full h-full  aspect-[5/7] select-none rounded-lg' />
                                                     </Link>
                                                 </div>
