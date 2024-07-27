@@ -3,7 +3,8 @@ const asyncHandler = require('express-async-handler');
 const {
     searchManga,
     getMangaByTagID,
-    getMangaByRating
+    getMangaByRating,
+    getMangaChapter
 } = require('../controller/MangaController');
 const axios = require('axios');
 const router = express.Router();
@@ -35,8 +36,18 @@ router.get('/manga-cover/:mangaId/:coverArtUrl', async (req, res) => {
         response.data.pipe(res);
     } catch (error) {
         console.log(error);
-        res.status(500).send('Failed to fetch image');
+        throw new Error('Failed to fetch image');
     }
 });
+
+router.get('/proxy/manga/:mangaId/feed', asyncHandler(async (req, res) => {
+    const {mangaId} = req.params;
+    try {
+        const data = await getMangaChapter(mangaId);
+        return data
+    } catch (error) {
+        throw new Error(error);
+    }
+}))
 
 module.exports = router;

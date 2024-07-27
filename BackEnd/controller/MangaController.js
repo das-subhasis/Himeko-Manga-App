@@ -28,7 +28,6 @@ const searchManga = async (params) => {
             const coverArtId = item.relationships.find(rel => rel.type === 'cover_art')?.id;
             const coverArtAttributes = item.relationships.find(rel => rel.type === 'cover_art')?.attributes;
             const coverArtUrl = coverArtAttributes.fileName;
-
             return {
                 mangaId: item.id,
                 title: mangaTitle,
@@ -84,6 +83,34 @@ const getMangaByRating = async (rating, followedCount) => {
         throw new Error('Failed to fetch manga by rating');
     }
 };
+
+export const getMangaChapter = async (mangaId) => {
+    try {
+        const response = await axios.get(`${baseUrl}/manga/${mangaId}/feed`, {
+            params: {
+                translatedLanguage: ['en'],
+                'order[chapter]': 'asc'
+            }
+        });
+
+        if (response.data.result === 'ok') {
+            const filteredData = response.data.data.map(item => ({
+                id: item.id,
+                volume: item.attributes.volume,
+                chapter: item.attributes.chapter,
+                title: item.attributes.title,
+                publishAt: item.attributes.publishAt
+            }));
+
+            return filteredData;
+        } else {
+            throw new Error('Failed to fetch manga feed');
+        }
+    } catch (error) {
+        throw new Error('Failed to fetch manga feed');
+    }
+
+}
 
 module.exports = {
     searchManga,
