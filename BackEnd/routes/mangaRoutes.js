@@ -5,7 +5,7 @@ const {
     getMangaByTagID,
     getMangaByRating
 } = require('../controller/MangaController');
-
+const axios = require('axios');
 const router = express.Router();
 
 router.get('/searchManga', asyncHandler(async (req, res) => {
@@ -34,6 +34,7 @@ router.get('/manga-cover/:mangaId/:coverArtUrl', async (req, res) => {
         const response = await axios.get(imageUrl, { responseType: 'stream' });
         response.data.pipe(res);
     } catch (error) {
+        console.log(error);
         res.status(500).send('Failed to fetch image');
     }
 });
