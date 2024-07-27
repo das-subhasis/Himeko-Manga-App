@@ -7,12 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const authContext = createContext()
 
 export const AuthProvider = ({ children }) => {
-
-
-    const navigate = useNavigate()
-    const location = useLocation()
-
-
+    
     const initialAuthState = JSON.parse(localStorage.getItem("userState")) || {
         _id: null,
         firstName: null,
@@ -21,9 +16,14 @@ export const AuthProvider = ({ children }) => {
         readHistory: [],
         token: null
     };
-    const [error, setError] = useState('')
+    const [error, setError] = useState('');
+    const [userState, authDispatch] = useReducer(authReducer, initialAuthState);
+    const [loading, setLoading] = useState(false);
 
-    const [userState, authDispatch] = useReducer(authReducer, initialAuthState)
+    const navigate = useNavigate()
+    const location = useLocation()
+
+
 
 
     useEffect(() => {
@@ -47,8 +47,7 @@ export const AuthProvider = ({ children }) => {
             console.error("Oops", error.response.data.message);
             setError(error.response.data.message)
         }
-
-    }
+    };
 
     const register = async ({ firstName, lastName, email, password }) => {
         try {
@@ -63,7 +62,7 @@ export const AuthProvider = ({ children }) => {
         } catch (error) {
             setError(error.response.data.message)
         }
-    }
+    };
 
     const logout = () => {
         authDispatch({
@@ -74,20 +73,20 @@ export const AuthProvider = ({ children }) => {
                     firstName: null,
                     lastName: null,
                     email: null,
-                    readHistory:[],
+                    readHistory: [],
                     token: null
                 }
             }
         })
         localStorage.clear()
         navigate('/')
-    }
+    };
 
     return (
-        <authContext.Provider value={{ userState, login, register, logout, error, setError, authDispatch }}>
+        <authContext.Provider value={{ userState, login, register, logout, error, setError, authDispatch, loading, setLoading }}>
             {children}
         </authContext.Provider>
     )
 }
 
-export const useAuthContext = () => useContext(authContext)
+export const useStateContext = () => useContext(authContext)

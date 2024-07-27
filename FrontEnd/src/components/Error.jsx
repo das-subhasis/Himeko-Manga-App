@@ -1,9 +1,9 @@
-import { useAuthContext } from "../context/authContext"
+import { useStateContext } from "../context/authContext"
 
 import React, { useEffect } from 'react'
 
 const Error = () => {
-    const { error, setError } = useAuthContext()
+    const { error, setError } = useStateContext()
     useEffect(() => {
         const Timer = setTimeout(() => {
             setError('')

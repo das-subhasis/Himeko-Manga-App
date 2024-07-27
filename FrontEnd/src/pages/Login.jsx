@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
-import { useAuthContext } from '../context/authContext';
+import { useStateContext } from '../context/authContext';
 import Error from '../components/Error';
 
 const Login = () => {
@@ -25,7 +25,7 @@ const Login = () => {
         setUser({ ...user, [name]: value })
     }
 
-    const { login, error, setError } = useAuthContext()
+    const { login, error, setError } = useStateContext()
 
 
     return (

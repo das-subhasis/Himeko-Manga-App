@@ -1,9 +1,9 @@
 import React from 'react'
-import { useAuthContext } from '../context/authContext'
+import { useStateContext } from '../context/authContext'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 const ProtectedRoute = ({ children }) => {
-    const { userState } = useAuthContext()
+    const { userState } = useStateContext()
     const navigate = useNavigate()
 
     if (userState._id) {

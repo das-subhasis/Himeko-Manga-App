@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { light_yg } from '../assets/images/images'
 import { Link } from 'react-router-dom'
 import { FaBars, FaSearch } from 'react-icons/fa'
-import { useAuthContext } from '../context/authContext'
+import { useStateContext } from '../context/authContext'
 import { searchManga } from '../api/mangadex.api'
 import { IoCloseCircle } from "react-icons/io5";
 import useComponentVisible from '../Hooks/useComponentVisible'
@@ -11,7 +11,7 @@ import SearchSkeleton from './SearchSkeleton'
 
 const Header = ({toggle,setToggle}) => {
     const resultRef = useRef(null)
-    const { logout, userState, authDispatch } = useAuthContext()
+    const { logout, userState, authDispatch } = useStateContext()
     const { ref, isVisible, setIsVisible } = useComponentVisible(false, resultRef)
     const [searchQuery, setSearchQuery] = useState("")
     const [isLoading, setisLoading] = useState(false)
@@ -37,8 +37,6 @@ const Header = ({toggle,setToggle}) => {
 
     const flushSearchQuery = (e) => {
         setSearchQuery("")
-        // setSearchResult([])
-        // setIsVisible(false)
     }
 
     useEffect(() => {
@@ -57,7 +55,7 @@ const Header = ({toggle,setToggle}) => {
             } else {
                 setSearchResult([]);
             }
-        }, 300); // Debounce time of 300ms
+        }, 300); 
 
         return () => clearTimeout(debounceTimeout);
     }, [searchQuery]);

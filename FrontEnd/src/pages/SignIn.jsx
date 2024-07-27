@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoEyeSharp, IoEyeOffSharp } from "react-icons/io5";
-import { useAuthContext } from '../context/authContext';
+import { useStateContext } from '../context/authContext';
 import Error from '../components/Error';
 const SignIn = () => {
     const [user, setUser] = useState({
@@ -12,7 +12,7 @@ const SignIn = () => {
         confirmPassword: ""
     })
 
-    const { register, setError } = useAuthContext()
+    const { register, setError } = useStateContext()
 
     const [showPassword, setShowPassword] = useState(false)
 

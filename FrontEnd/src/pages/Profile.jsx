@@ -1,9 +1,9 @@
 import React from 'react'
-import { useAuthContext } from '../context/authContext'
+import { useStateContext } from '../context/authContext'
 import { Link } from 'react-router-dom'
 
 const Profile = () => {
-    const { userState } = useAuthContext()
+    const { userState } = useStateContext()
     return (
         <>
             <div className='flex-1 px-20 font-poppins'>
