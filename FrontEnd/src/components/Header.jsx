@@ -7,9 +7,10 @@ import { searchManga } from '../api/mangadex.api'
 import { IoCloseCircle } from "react-icons/io5";
 import useComponentVisible from '../Hooks/useComponentVisible'
 import SearchSkeleton from './SearchSkeleton'
+import client from '../config/config'
 
 
-const Header = ({toggle,setToggle}) => {
+const Header = ({ toggle, setToggle }) => {
     const resultRef = useRef(null)
     const { logout, userState, authDispatch } = useStateContext()
     const { ref, isVisible, setIsVisible } = useComponentVisible(false, resultRef)
@@ -21,10 +22,10 @@ const Header = ({toggle,setToggle}) => {
     }, []);
 
     const updateHistory = (manga) => {
-        if (userState?.token){
+        if (userState?.token) {
             authDispatch({
                 type: "HANDLE_READ",
-                payload:{
+                payload: {
                     readHistory: {
                         title: manga.title,
                         id: manga.mangaId,
@@ -45,8 +46,8 @@ const Header = ({toggle,setToggle}) => {
             if (searchQuery.trim() !== '') {
                 setIsVisible(true);
                 try {
-                    const response = await searchManga({ title: searchQuery, limit: 5 });
-                    setSearchResult(response);
+                    const response = await client.get('/manga/searchManga', { params: { title: searchQuery, limit: 5 } })
+                    setSearchResult(response.data);
                 } catch (e) {
                     console.error(e);
                 } finally {
@@ -55,7 +56,7 @@ const Header = ({toggle,setToggle}) => {
             } else {
                 setSearchResult([]);
             }
-        }, 300); 
+        }, 300);
 
         return () => clearTimeout(debounceTimeout);
     }, [searchQuery]);
