@@ -40,7 +40,7 @@ router.get('/manga-cover/:mangaId/:coverArtUrl', async (req, res) => {
     }
 });
 
-router.get('chapter/:mangaId/feed', asyncHandler(async (req, res) => {
+router.get('/chapter/:mangaId/feed', asyncHandler(async (req, res) => {
     const {mangaId} = req.params;
     try {
         const data = await getMangaChapter(mangaId);
