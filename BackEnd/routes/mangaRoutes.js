@@ -27,4 +27,15 @@ router.get('/getMangaByRating', asyncHandler(async (req, res) => {
     res.json(result);
 }));
 
+router.get('/manga-cover/:mangaId/:coverArtUrl', async (req, res) => {
+    const { mangaId, coverArtUrl } = req.params;
+    const imageUrl = `https://uploads.mangadex.org/covers/${mangaId}/${coverArtUrl}`;
+    try {
+        const response = await axios.get(imageUrl, { responseType: 'stream' });
+        response.data.pipe(res);
+    } catch (error) {
+        res.status(500).send('Failed to fetch image');
+    }
+});
+
 module.exports = router;

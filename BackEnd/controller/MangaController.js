@@ -6,11 +6,8 @@ const cover_url = "https://uploads.mangadex.org/covers";
 
 const searchManga = async (params) => {
     try {
-        const resp = await axios({
-            method: 'GET',
-            url: `${base_url}/manga?includes[]=cover_art&includes[]=artist&includes[]=author`,
-            params: { ...params }
-        });
+        const resp = await axios.get(`${base_url}/manga?includes[]=cover_art&includes[]=artist&includes[]=author`,
+            { params: { ...params } });
 
         const data = resp.data.data.map(item => {
             const mangaTitle = item.attributes.title?.en || item.attributes.title["ja-ro"];
