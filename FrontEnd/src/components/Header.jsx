@@ -83,12 +83,12 @@ const Header = ({toggle,setToggle}) => {
                 </div>
                 <div className='flex items-center gap-5 text-md font-bold '>
                     <div
-                        className='relative flex items-center  text-sm '
+                        className='relative flex items-center text-sm '
                     >
                         <input
                             type="text"
                             id="search"
-                            value={searchQuery} className={`md:relative w-[180px] md:w-[400px]
+                            value={searchQuery} className={`md:relative w-[100px] sm:w-[180px] md:w-[400px]
                             transition-all duration-200 ease-in-out bg-inherit focus-within:bg-[#151515] h-8 outline-none focus:ring-2 focus:ring-[#FF5F00] focus-within:pl-3 pr-8 rounded-md text-[#B4B4B8]`}
                             ref={ref}
                             placeholder='Search for manga'
