@@ -19,6 +19,7 @@ router.get('/getMangaByTagID', asyncHandler(async (req, res) => {
     const include = req.query.include ? req.query.include.split(',') : [];
     const exclude = req.query.exclude ? req.query.exclude.split(',') : [];
     const result = await getMangaByTagID(include, exclude);
+    console.log(result);
     res.json(result);
 }));
 

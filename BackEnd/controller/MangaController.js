@@ -1,4 +1,3 @@
-// controllers/mangaController.js
 const axios = require('axios');
 
 const base_url = "https://api.mangadex.org";
@@ -35,7 +34,7 @@ const searchManga = async (params) => {
                 tags,
                 year,
                 status,
-                description,
+                description: description,
                 authorId,
                 author: authorName,
                 artistId,
@@ -44,6 +43,7 @@ const searchManga = async (params) => {
                 coverArtUrl
             };
         });
+        console.log(data);
         return data;
     } catch (error) {
         throw new Error('Failed to fetch manga data');
@@ -60,7 +60,6 @@ const getMangaByTagID = async (include = [], exclude = []) => {
         const excludedTags = tags.data.data
             .filter(tag => exclude.includes(tag.attributes.name.en))
             .map(tags => tags.id);
-
         return searchManga({ includedTags, excludedTags });
     } catch (error) {
         throw new Error('Failed to fetch manga by tags');
