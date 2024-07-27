@@ -10,7 +10,22 @@ import MangaSkeleton from './MangaSkeleton'
 const MangaSlider = ({ category }) => {
 
     const [manga, setManga] = useState([])
-    const { loading, setLoading } = useStateContext()
+    const { loading, setLoading, authDispatch, setSelectedManga, userState } = useStateContext()
+
+    const updateHistory = (manga) => {
+        if (userState?.token) {
+            authDispatch({
+                type: "HANDLE_READ",
+                payload: {
+                    readHistory: {
+                        title: manga.title,
+                        id: manga.mangaId,
+                        readAt: Date.now()
+                    }
+                }
+            })
+        }
+    }
 
     useEffect(() => {
         const data = async () => {
@@ -44,9 +59,12 @@ const MangaSlider = ({ category }) => {
                                         <SwiperSlide
                                             key={manga.mangaId}
                                             className='h-full w-[128px] md:w-[200px] mr-6 '>
-                                            <div className='flex flex-col h-[calc(100%-1.75rem)] '>
+                                            <div className='flex flex-col h-[calc(100%-1.75rem)] ' onClick={() => {
+                                                setSelectedManga(manga);
+                                                updateHistory(manga);
+                                            }}>
                                                 <div className='w-full h-full overflow-hidden '>
-                                                    <Link>
+                                                    <Link to={`/manga/${manga.mangaId}`}>
                                                         <img src={`https://himeko-manga-app.vercel.app/api/manga/manga-cover/${manga.mangaId}/${manga.coverArtUrl}`} alt=""
                                                             className='object-cover w-full h-full  aspect-[5/7] select-none rounded-lg' />
                                                     </Link>

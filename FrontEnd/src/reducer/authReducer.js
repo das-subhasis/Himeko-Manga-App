@@ -18,7 +18,8 @@ const authReducer = (state, action) => {
                 console.log(error)
             }
         case "HANDLE_READ":
-            const { readHistory, token } = action.payload
+            console.log('clicked');
+            const { readHistory } = action.payload
             return {
                 ...state,
                 readHistory: [...state.readHistory, readHistory],

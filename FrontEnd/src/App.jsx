@@ -23,7 +23,7 @@ function App() {
           <Route path="/Profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
           <Route path="/login" Component={Login} />
           <Route path="/signin" Component={SignIn} />
-          <Route path="/manga/:title" Component={Manga} />
+          <Route path="/manga/:id" Component={Manga} />
         </Routes>
         {/* <Footer /> */}
       </div>

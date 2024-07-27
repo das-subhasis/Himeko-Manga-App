@@ -12,7 +12,7 @@ import client from '../config/config'
 
 const Header = ({ toggle, setToggle }) => {
     const resultRef = useRef(null)
-    const { logout, userState, authDispatch } = useStateContext()
+    const { logout, userState, authDispatch, setSelectedManga } = useStateContext()
     const { ref, isVisible, setIsVisible } = useComponentVisible(false, resultRef)
     const [searchQuery, setSearchQuery] = useState("")
     const [isLoading, setisLoading] = useState(false)
@@ -117,8 +117,11 @@ const Header = ({ toggle, setToggle }) => {
                                             searchResult.map(manga => {
                                                 return <Link
                                                     key={manga.mangaId}
-                                                    to={`https://mangadex.org/title/${manga.mangaId}`}
-                                                    onClick={() => updateHistory(manga)}
+                                                    to={`/manga/${manga.mangaId}`}
+                                                    onClick={() => {
+                                                        updateHistory(manga);
+                                                        setSelectedManga(manga);
+                                                    }}
 
                                                 ><div
                                                     className='w-full h-10 flex items-center text-white bg-[#1c1c1c] px-2'>

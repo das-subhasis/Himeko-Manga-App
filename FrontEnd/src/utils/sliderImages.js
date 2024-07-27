@@ -1,36 +1,142 @@
-import {fairy, ghoul, vinland, nanatsu, kingdom} from '../assets/images/images'
+import { fairy, ghoul, vinland, nanatsu, kingdom } from '../assets/images/images'
 
-const sliderImages = [
+const myPicks = [
     {
-        url: fairy,
-        title: 'Fairy Tail',
-        author: 'Hiro Mashima',
-        desc: 'Enter the whimsical world of Fairy Tail, where wizards cast spells and friendships are as strong as dragon scales. Join Natsu Dragneel and his motley crew of magical misfits as they embark on epic quests and face fearsome foes with fire, fury, and a sprinkle of fairy dust!'
+        "mangaId": "6a1d1cb1-ecd5-40d9-89ff-9d88e40b136b",
+        "title": "Tokyo Ghoul",
+        "latestUploadedChapter": "74a6f7ff-1b23-4380-b3ab-2c5f1fec9bbc",
+        "tags": [
+            "Thriller",
+            "Sci-Fi",
+            "Monsters",
+            "Action",
+            "Psychological",
+            "Romance",
+            "Survival",
+            "Adventure",
+            "Philosophical",
+            "Gore",
+            "Drama",
+            "Horror",
+            "Delinquents",
+            "Police",
+            "Mystery",
+            "Tragedy"
+        ],
+        "year": 2011,
+        "status": "completed",
+        "description": "Lurking within the shadows of Tokyo are frightening beings known as \"ghouls,\" who satisfy their hunger by feeding on humans once night falls. Ken Kaneki, an unsuspecting university freshman, finds himself caught in a world between humans and ghouls when his date turns out to be a ghoul after his flesh.\n\n[Written by MAL Rewrite]",
+        "authorId": "c9d25993-e84a-4b77-b1e1-276e0257a0c5",
+        "author": "Ishida Sui",
+        "artistId": "c9d25993-e84a-4b77-b1e1-276e0257a0c5",
+        "artist": "Ishida Sui",
+        "coverArtId": "cedb7318-738d-4fb3-b916-bcdf5127fe95",
+        "coverArtUrl": "98c90b96-db95-4c15-a407-eb70a3b6cf96.jpg"
     },
     {
-        url: ghoul,
-        title: 'Tokyo Ghoul',
-        author: 'Ishida Sui',
-        desc: 'Dive into the shadows of Tokyo, where humans and ghouls roam the streets in a deadly dance of survival. Follow Ken Kaneki as he grapples with his newfound half-ghoul identity, navigating a world where the line between monster and man is blurred and the taste of flesh is bittersweet.'
-    },
-    {
-        url: kingdom,
-        title: 'Kingdom',
-        author: 'Hara Yasuhisa',
-        desc: 'In the heart of ancient China, kingdoms rise and fall like the tide, and heroes are forged in the fires of war. Join Xin as he dreams of becoming the greatest general under the heavens, carving his name into the annals of history with blood, sweat, and the clash of a thousand swords!'
-    },
-    {
-        url: nanatsu,
-        title: 'Nanatsu No Taizai',
-        author: 'Suzuki Nakaba',
-        desc: 'Prepare for a whirlwind adventure with the Seven Deadly Sins, a band of outcast knights on a quest to save their kingdom from tyranny. From towering giants to devious demons, no challenge is too great for this ragtag group of heroes, armed with swords, sorcery, and a healthy dose of sass!'
-    },
-    {
-        url: vinland,
-        title: 'Vinland Saga',
-        author: 'Yukimura Makoto',
-        desc: 'Set sail for the untamed shores of Vinland, where Viking warriors seek glory, honor, and a place to call home. Follow Thorfinn Karlsefni as he braves the high seas, battles rival clans, and discovers that true strength lies not in the swing of a sword, but in the bonds of brotherhood.'
+        "mangaId": "227e3f72-863f-46f9-bafe-c43104ca29ee",
+        "title": "Fairy Tail",
+        "latestUploadedChapter": "c64e5685-7bdd-4028-abb4-26a961a2b49a",
+        "tags": [
+            "Award Winning",
+            "Action",
+            "Comedy",
+            "Adventure",
+            "Magic",
+            "Fantasy",
+            "Supernatural"
+        ],
+        "year": 2006,
+        "status": "completed",
+        "description": "Celestial wizard Lucy wants to join the Fairy Tail, a guild for the most powerful wizards. But instead, her ambitions land her in the clutches of a gang of unsavory pirates led by a devious magician. Her only hope is Natsu, a strange boy she happens to meet on her travels. Natsu's not your typical hero - but he just might be Lucy's best hope.\n\nWon the 33th Kodansha Manga Award for Best Shounen Manga.\nWon the Society for the Promotion of Japanese Animation's Industry Award for Best Comedy Manga.",
+        "authorId": "301aeb64-0512-4230-b5cf-a51407f1146d",
+        "author": "Mashima Hiro",
+        "artistId": "301aeb64-0512-4230-b5cf-a51407f1146d",
+        "artist": "Mashima Hiro",
+        "coverArtId": "68e5f338-78b5-4f05-a5c8-8180689213b8",
+        "coverArtUrl": "2fbddeeb-5743-4a36-8341-847b9c597ce2.jpg"
+    }, {
+        "mangaId": "e52d9403-3356-403b-b7bb-d7d6a420dd50",
+        "title": "The Seven Deadly Sins",
+        "latestUploadedChapter": "dd6bfb8e-5b25-4b6b-a428-4e072a27fbea",
+        "tags": [
+            "Award Winning",
+            "Reincarnation",
+            "Action",
+            "Demons",
+            "Romance",
+            "Comedy",
+            "Adventure",
+            "Magic",
+            "Drama",
+            "Fantasy"
+        ],
+        "year": 2012,
+        "status": "completed",
+        "description": "The \"Seven Deadly Sins,\" a group of evil knights who conspired to overthrow the kingdom of Britannia, were said to have been eradicated by the Holy Knights, although some claim that they still live. Ten years later, the Holy Knights have staged a Coup d'état and captured the king, becoming the new, tyrannical rulers of the kingdom. Elizabeth, the king's third daughter, sets out on a journey to find the \"Seven Deadly Sins,\" and to enlist their help in taking back the kingdom.",
+        "authorId": "5b0372bb-28f9-4840-894b-a217d774c4f2",
+        "author": "Suzuki Nakaba",
+        "artistId": "5b0372bb-28f9-4840-894b-a217d774c4f2",
+        "artist": "Suzuki Nakaba",
+        "coverArtId": "0265c1e5-db3c-4f5e-a979-8d93b66deb0d",
+        "coverArtUrl": "8ecb7e87-8997-4d35-8734-55270d96ef19.jpg"
+    }, {
+        "mangaId": "5d1fc77e-706a-4fc5-bea8-486c9be0145d",
+        "title": "Vinland Saga",
+        "latestUploadedChapter": "1000815e-3b42-4608-a2cf-6403cb7af48b",
+        "tags": [
+            "Thriller",
+            "Award Winning",
+            "Historical",
+            "Action",
+            "Psychological",
+            "Romance",
+            "Comedy",
+            "Survival",
+            "Martial Arts",
+            "Adventure",
+            "Military",
+            "Gore",
+            "Drama",
+            "Horror",
+            "Slice of Life",
+            "Tragedy"
+        ],
+        "year": 2005,
+        "status": "ongoing",
+        "description": "As a child, Thorfinn sat at the feet of the great Leif Ericson and thrilled to wild tales of a land far to the west. But his youthful fantasies were shattered by a mercenary raid. Raised by the Vikings who murdered his family, Thorfinn became a terrifying warrior, forever seeking to kill the band's leader, Askeladd, and avenge his father. Sustaining Thorfinn through his ordeal are his pride in his family and his dreams of a fertile westward land, a land without war or slavery… the land Leif called Vinland. \n\n---\n- **Won the Japan Media Arts Award Division Grand Prize in 2009**\n- **Won the 36th Kodansha Manga Award for General Manga in 2012**",
+        "authorId": "f5d4fca1-d573-4383-af08-c06b0794ba4e",
+        "author": "Yukimura Makoto",
+        "artistId": "f5d4fca1-d573-4383-af08-c06b0794ba4e",
+        "artist": "Yukimura Makoto",
+        "coverArtId": "8988cd98-fab7-4e5a-863d-adbd27368440",
+        "coverArtUrl": "6c78781e-1c29-44cf-803a-8cfbc8a5f5c2.jpg"
+    }, {
+        "mangaId": "077a3fed-1634-424f-be7a-9a96b7f07b78",
+        "title": "Kingdom",
+        "latestUploadedChapter": "66e2f496-2b88-414a-994b-641ff1c18d72",
+        "tags": [
+            "Award Winning",
+            "Historical",
+            "Action",
+            "Survival",
+            "Martial Arts",
+            "Adventure",
+            "Military",
+            "Gore",
+            "Drama",
+            "Tragedy"
+        ],
+        "year": 2006,
+        "status": "ongoing",
+        "description": "Millions of years have passed since the times of legends, when the worlds of man and gods were still the same. In these times it was the desires of man that moved the world. It is the era of the 500 year war: The warring states period. Kingdom is the story of a young boy named Shin who grew into a great general and all the trials and bloodshed that lead him there.\n\n---\n\n- **Won the Osamu Tezuka Cultural Grand Prize in 2013**\n- **Earned a Guinness World Record on December 12, 2012 for Manga written by the most people. -Note- The record was due to its \"Social Kingdom\" campaign in which fans and other artists were given the task of redrawing the entire 26th volume.**\n\nAs of June 2022, Kingdom has over 90 million copies in circulation, making it one of the currently best-selling manga series of all time.\n\nParution: Weekly Young Jump\n\n---\n\n**Officially Translated:**\n- In French by [Meian](https://www.meian-editions.fr/meian/licence/kingdom/1131)\n- In Italian by [J-pop](https://j-pop.it/it/fumetti/manga/kingdom.html)",
+        "authorId": "6637c726-8d02-456f-b837-65e1b190d0af",
+        "author": "Hara Yasuhisa",
+        "artistId": "6637c726-8d02-456f-b837-65e1b190d0af",
+        "artist": "Hara Yasuhisa",
+        "coverArtId": "82556490-d374-4d1b-a0b0-a249391dd503",
+        "coverArtUrl": "dcfeffd8-a507-4b08-922d-0b28d91a7630.jpg"
     }
 ];
 
-export default sliderImages
+export default myPicks

@@ -19,17 +19,32 @@ export const AuthProvider = ({ children }) => {
     const [error, setError] = useState('');
     const [userState, authDispatch] = useReducer(authReducer, initialAuthState);
     const [loading, setLoading] = useState(false);
-
+    const [selectedManga, setSelectedManga] = useState(JSON.parse(localStorage.getItem("selectedManga")) || {});
+    
     const navigate = useNavigate()
     const location = useLocation()
 
 
 
-
     useEffect(() => {
         localStorage.setItem("userState", JSON.stringify(userState));
-    }, [userState]);
+        localStorage.setItem("selectedManga", JSON.stringify(selectedManga));
+    }, [userState, selectedManga]);
 
+    const updateHistory = (manga) => {
+        if (userState?.token) {
+            authDispatch({
+                type: "HANDLE_READ",
+                payload: {
+                    readHistory: {
+                        title: manga.title,
+                        id: manga.mangaId,
+                        readAt: Date.now()
+                    }
+                }
+            })
+        }
+    }
 
 
     const login = async ({ email, password }) => {
@@ -83,7 +98,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <authContext.Provider value={{ userState, login, register, logout, error, setError, authDispatch, loading, setLoading }}>
+        <authContext.Provider value={{ userState, login, register, logout, error, selectedManga, setError, authDispatch, loading, setLoading, setSelectedManga, updateHistory }}>
             {children}
         </authContext.Provider>
     )

@@ -6,7 +6,7 @@ const Profile = () => {
     const { userState } = useStateContext()
     return (
         <>
-            <div className='flex-1 px-20 font-poppins'>
+            <div className='flex-1 px-20 font-poppins mb-10'>
                 <div className='mt-10'>
                     <h1 className='text-2xl text-white text-center'>It's great to have you back {userState.firstName}     </h1>
                 </div>

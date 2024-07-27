@@ -10,12 +10,6 @@ import MangaSlider from '../components/MangaSlider'
 
 
 const Homepage = () => {
-    const { userState } = useStateContext()
-    console.log(localStorage)
-
-    useEffect(() => {
-        searchManga()
-    })
     return (
         <div className='min-h-[500px]'>
             <Slider />
