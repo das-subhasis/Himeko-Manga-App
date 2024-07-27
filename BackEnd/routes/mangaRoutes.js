@@ -44,7 +44,7 @@ router.get('/chapter/:mangaId/feed', asyncHandler(async (req, res) => {
     const {mangaId} = req.params;
     try {
         const data = await getMangaChapter(mangaId);
-        return data
+        res.json(data)
     } catch (error) {
         throw new Error(error);
     }

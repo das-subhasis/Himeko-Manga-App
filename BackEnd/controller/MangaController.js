@@ -84,15 +84,14 @@ const getMangaByRating = async (rating, followedCount) => {
     }
 };
 
-export const getMangaChapter = async (mangaId) => {
+const getMangaChapter = async (mangaId) => {
     try {
-        const response = await axios.get(`${baseUrl}/manga/${mangaId}/feed`, {
+        const response = await axios.get(`https://api.mangadex.org/manga/${mangaId}/feed`, {
             params: {
                 translatedLanguage: ['en'],
                 'order[chapter]': 'asc'
             }
         });
-
         if (response.data.result === 'ok') {
             const filteredData = response.data.data.map(item => ({
                 id: item.id,
@@ -101,7 +100,6 @@ export const getMangaChapter = async (mangaId) => {
                 title: item.attributes.title,
                 publishAt: item.attributes.publishAt
             }));
-
             return filteredData;
         } else {
             throw new Error('Failed to fetch manga feed');
@@ -115,5 +113,6 @@ export const getMangaChapter = async (mangaId) => {
 module.exports = {
     searchManga,
     getMangaByTagID,
-    getMangaByRating
+    getMangaByRating,
+    getMangaChapter
 };
