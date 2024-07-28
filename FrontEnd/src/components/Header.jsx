@@ -78,7 +78,7 @@ const Header = ({ toggle, setToggle }) => {
                             src={light_yg}
                             alt="logo"
                             className='w-10' />
-                        <span className='hidden sm:block'><p className='font-poppins font-bold '>Himeko</p></span>
+                        <span className='hidden lg:block'><p className='font-poppins font-bold '>Himeko</p></span>
                     </div>
                     </Link>
                 </div>
@@ -89,7 +89,7 @@ const Header = ({ toggle, setToggle }) => {
                         <input
                             type="text"
                             id="search"
-                            value={searchQuery} className={`md:relative w-[100px] sm:w-[180px] md:w-[400px]
+                            value={searchQuery} className={`md:relative w-[100px] sm:w-[180px] md:w-[200px] lg:w-[350px] xl:w-[400px]
                             transition-all duration-200 ease-in-out bg-inherit focus-within:bg-[#151515] h-8 outline-none focus:ring-2 focus:ring-[#FF5F00] focus-within:pl-3 pr-8 rounded-md text-[#B4B4B8]`}
                             ref={ref}
                             placeholder='Search for manga'
@@ -135,7 +135,7 @@ const Header = ({ toggle, setToggle }) => {
                             </div>
                         }
                     </div>
-                    <div className='md:block md:px-5 py-1'><Link to={'/'}>Home</Link></div>
+                    <div className='hidden md:block md:px-5 py-1'><Link to={'/'}>Home</Link></div>
                     <div className='md:block md:px-5 py-1'><Link to={'/profile'}>Profile</Link></div>
                     {
                         userState._id ? (<>
